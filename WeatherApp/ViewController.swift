@@ -15,16 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet var weatherLabel: UILabel!
     
     @IBAction func findWeather(sender: AnyObject) {
+        let searchText = userCity.text!.stringByReplacingOccurrencesOfString(" ", withString: "-")
         
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        let url = NSURL(string: "http://www.weather-forecast.com/locations/London/forecasts/latest")
+        let url = NSURL(string: "http://www.weather-forecast.com/locations/" + (searchText) + "/forecasts/latest")
         
         if url != nil {
             
@@ -41,9 +34,10 @@ class ViewController: UIViewController {
                     
                     if urlContentArray.count > 0 {
                         
-                        let weatherArray = urlContentArray[1].componentsSeparatedByString("/<span>")
+                        let weatherArray = urlContentArray[1].componentsSeparatedByString("</span>")
                         
                         weather = weatherArray[0] as String!
+                        weather = weather.stringByReplacingOccurrencesOfString("&deg;", withString: "º")
                         
                     } else {
                         urlError = true
@@ -61,10 +55,10 @@ class ViewController: UIViewController {
                     } else {
                         self.weatherLabel.text = weather
                         
-                        }
-                    })
+                    }
+                })
                 
-             
+                
                 
                 
             })
@@ -74,6 +68,16 @@ class ViewController: UIViewController {
         } else {
             weatherLabel.text = "Please enter a valid city name!"
         }
+        
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+
 
     }
 
