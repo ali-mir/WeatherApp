@@ -28,18 +28,43 @@ class ViewController: UIViewController {
         
         if url != nil {
             
+            
             let task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
-                
+                var urlError = false
+                var weather = ""
                 
                 if error == nil {
                     
-                    let urlContent = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                    print(urlContent)
+                    let urlContent = NSString(data: data!, encoding: NSUTF8StringEncoding) as NSString!
+                    
+                    let urlContentArray = urlContent.componentsSeparatedByString("<span class=\"phrase\">")
+                    
+                    if urlContentArray.count > 0 {
+                        
+                        let weatherArray = urlContentArray[1].componentsSeparatedByString("/<span>")
+                        
+                        weather = weatherArray[0] as String!
+                        
+                    } else {
+                        urlError = true
+                    }
                     
                 } else {
-                    self.weatherLabel.text = "Network error. Please try again later"
+                    urlError = true
                     
                 }
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    if urlError == true {
+                        self.weatherLabel.text = "Error!"
+                        
+                    } else {
+                        self.weatherLabel.text = weather
+                        
+                        }
+                    })
+                
+             
                 
                 
             })
