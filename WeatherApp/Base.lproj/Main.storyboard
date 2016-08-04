@@ -29,27 +29,38 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter your city:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kz-6X-pSS">
                                 <rect key="frame" x="118" y="114" width="138" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zRi-jH-dhQ">
                                 <rect key="frame" x="88" y="154" width="198" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxT-wc-Z1n">
                                 <rect key="frame" x="130" y="214" width="115" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="findWeather:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KMv-W0-EbT"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Weather:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMK-WH-lUc">
+                                <rect key="frame" x="20" y="289" width="335" height="176"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="gxT-wc-Z1n" secondAttribute="trailing" constant="110" id="6jx-jz-W4f"/>
                             <constraint firstItem="gxT-wc-Z1n" firstAttribute="top" secondItem="zRi-jH-dhQ" secondAttribute="bottom" constant="30" id="Cub-fJ-Jz5"/>
                             <constraint firstItem="gxT-wc-Z1n" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="110" id="DQm-U9-euJ"/>
+                            <constraint firstItem="GMK-WH-lUc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="DkJ-9i-aFK"/>
                             <constraint firstItem="cFz-xx-L5P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="G9E-WR-4P9"/>
+                            <constraint firstItem="GMK-WH-lUc" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Im4-Md-24x"/>
                             <constraint firstItem="jQz-DZ-PZ2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="101" id="M8b-ik-tRD"/>
                             <constraint firstItem="0Kz-6X-pSS" firstAttribute="top" secondItem="jQz-DZ-PZ2" secondAttribute="bottom" constant="8" id="Ok0-80-WUw"/>
                             <constraint firstItem="zRi-jH-dhQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="68" id="RAg-1V-e4J"/>
@@ -60,11 +71,16 @@
                             <constraint firstItem="zRi-jH-dhQ" firstAttribute="top" secondItem="0Kz-6X-pSS" secondAttribute="bottom" constant="19" id="bts-1W-7ZB"/>
                             <constraint firstItem="jQz-DZ-PZ2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="29" id="fAL-55-wll"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jQz-DZ-PZ2" secondAttribute="trailing" constant="101" id="gQz-5b-8rc"/>
+                            <constraint firstItem="GMK-WH-lUc" firstAttribute="top" secondItem="gxT-wc-Z1n" secondAttribute="bottom" constant="45" id="onq-ae-7yh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zRi-jH-dhQ" secondAttribute="trailing" constant="69" id="vVz-GK-lql"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cFz-xx-L5P" secondAttribute="bottom" id="xZL-QR-kiy"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="userCity" destination="zRi-jH-dhQ" id="hXc-xB-MvN"/>
+                        <outlet property="weatherLabel" destination="GMK-WH-lUc" id="zpg-tS-Zmk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
